@@ -1,0 +1,25 @@
+spring:
+  # for H2 embedded database only
+  datasource:
+    url: jdbc:mysql://192.168.6.36:3306/spring-boot
+    username: root
+    password: 123456
+
+  jpa:
+    database: mysql
+    show-sql: true
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+
+  h2:
+    console:
+      enabled: true
+
+  data:
+    mongodb:
+      uri: mongodb://192.168.6.36:27017/spring-boot
+
+
+
+
