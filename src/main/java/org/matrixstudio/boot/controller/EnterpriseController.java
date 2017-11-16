@@ -3,6 +3,7 @@ package org.matrixstudio.boot.controller;
 import org.matrixstudio.boot.model.entity.Enterprise;
 import org.matrixstudio.boot.repository.jpa.EnterpriseRepository;
 import org.matrixstudio.boot.resource.EnterpriseResource;
+import org.matrixstudio.boot.service.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
@@ -20,11 +21,13 @@ public class EnterpriseController {
 
     @Autowired
     private EnterpriseRepository enterpriseRepository;
+    @Autowired
+    private EnterpriseService enterpriseService;
 
     @GetMapping
     public PagedResources<EnterpriseResource> list(Pageable pageable, @RequestParam(required = false) String search,
                                                    PagedResourcesAssembler<Enterprise> assembler) {
-        return assembler.toResource(enterpriseRepository.findAll(pageable), enterpriseAssembler);
+        return assembler.toResource(enterpriseService.list(pageable, search), enterpriseAssembler);
     }
 
     @GetMapping("/{oid}")

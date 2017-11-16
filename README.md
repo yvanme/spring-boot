@@ -19,7 +19,7 @@ Spring Boot演示项目
 - [x] Spring Boot Data Mongodb
 - [x] Spring Boot Tests
 - [x] Spring Boot RESTful API with spring-hateoas
-- [ ] Spring Boot Cache
+- [x] Spring Boot Cache
 - [ ] Spring Security OAuth2
 - [ ] Spring AMQP
 - [ ] Customize auto-configuration

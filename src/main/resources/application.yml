@@ -1,7 +1,7 @@
 spring:
   # for H2 embedded database only
   datasource:
-    url: jdbc:mysql://192.168.6.36:3306/spring-boot
+    url: jdbc:mysql://192.168.6.36:3306/spring-boot?useUnicode=true&characterEncoding=UTF8&useSSL=false
     username: root
     password: 123456
 
@@ -19,7 +19,14 @@ spring:
   data:
     mongodb:
       uri: mongodb://192.168.6.36:27017/spring-boot
+      field-naming-strategy: org.springframework.data.mapping.model.SnakeCaseFieldNamingStrategy
 
+  cache:
+    type: redis
 
+  redis:
+    url: http://192.168.6.36:6379
+
+#debug: true
 
 

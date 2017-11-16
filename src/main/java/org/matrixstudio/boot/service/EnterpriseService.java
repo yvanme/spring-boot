@@ -17,7 +17,7 @@ public class EnterpriseService {
     private EnterpriseRepository enterpriseRepository;
 
     @Transactional(readOnly = true)
-    @Cacheable("enterprises")
+    @Cacheable(key = "#root.targetClass.name", value = "enterprises")
     public Page<Enterprise> list(Pageable pageable, String search) {
         return enterpriseRepository.findAll(pageable);
     }
