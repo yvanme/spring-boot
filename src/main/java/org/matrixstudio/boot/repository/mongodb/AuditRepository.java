@@ -1,4 +1,4 @@
-package org.matrixstudio.boot.repository.mongo;
+package org.matrixstudio.boot.repository.mongodb;
 
 import org.matrixstudio.boot.model.document.Audit;
 import org.springframework.data.mongodb.repository.MongoRepository;

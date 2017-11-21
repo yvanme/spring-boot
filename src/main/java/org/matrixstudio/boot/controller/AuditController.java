@@ -1,16 +1,14 @@
 package org.matrixstudio.boot.controller;
 
 import org.matrixstudio.boot.model.document.Audit;
-import org.matrixstudio.boot.repository.mongo.AuditRepository;
+import org.matrixstudio.boot.repository.mongodb.AuditRepository;
 import org.matrixstudio.boot.resource.AuditResource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.PagedResources;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

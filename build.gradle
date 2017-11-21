@@ -40,6 +40,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-aop')
     compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-amqp')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     compile('org.springframework.boot:spring-boot-starter-data-redis')
@@ -49,7 +50,7 @@ dependencies {
     optional('org.springframework.boot:spring-boot-configuration-processor')
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+	testCompile('de.flapdoodle.embed:de.flapdoodle.embed.mongodb')
     testCompile('com.h2database:h2:1.4.196')
 }
 
