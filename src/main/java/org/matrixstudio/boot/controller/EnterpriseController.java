@@ -31,7 +31,7 @@ public class EnterpriseController {
     }
 
     @GetMapping("/{oid}")
-    public EnterpriseResource get(@PathVariable String oid) {
+    public EnterpriseResource get(@PathVariable Long oid) {
         Enterprise enterprise = enterpriseRepository.findOne(oid);
         if (enterprise == null) {
             throw new RuntimeException("Enterprise[" + oid + "] not found.");

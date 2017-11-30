@@ -3,15 +3,15 @@ package org.matrixstudio.boot.model.document;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "audit")
+@Document(collection = "sb_audit")
 public class Audit implements java.io.Serializable {
 
+    @Id
     private String oid;
     private Long date;
     private Action action;
     private String objectId;
 
-    @Id
     public String getOid() {
         return oid;
     }

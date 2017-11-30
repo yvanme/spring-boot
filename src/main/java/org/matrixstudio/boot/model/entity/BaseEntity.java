@@ -1,7 +1,5 @@
 package org.matrixstudio.boot.model.entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -10,15 +8,14 @@ import javax.persistence.MappedSuperclass;
 public class BaseEntity implements java.io.Serializable {
 
     @Id
-    @GeneratedValue(generator = "idGenerator")
-    @GenericGenerator(name = "idGenerator", strategy = "org.hibernate.id.UUIDGenerator")
-    private String oid;
+    @GeneratedValue
+    private Long oid;
 
-    public String getOid() {
+    public Long getOid() {
         return oid;
     }
 
-    public void setOid(String oid) {
+    public void setOid(Long oid) {
         this.oid = oid;
     }
 }

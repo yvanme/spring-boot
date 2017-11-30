@@ -44,8 +44,23 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     compile('org.springframework.boot:spring-boot-starter-data-redis')
-    compile('org.springframework.hateoas:spring-hateoas:0.23.0.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-hateoas')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+
+    compile('org.springframework.security:spring-security-jwt')
+
+    compile('org.springframework.security.oauth:spring-security-oauth2')
+
     compile('mysql:mysql-connector-java:5.1.44')
+
+    compile('net.sourceforge.nekohtml:nekohtml:1.9.22')
+
+    compile('org.webjars:jquery:3.2.1')
+    compile('org.webjars:bootstrap:3.3.7')
+    compile('org.webjars:font-awesome:4.7.0')
+    compile('org.webjars:ionicons:2.0.1')
+    compile('org.webjars:AdminLTE:2.4.2')
 
     optional('org.springframework.boot:spring-boot-configuration-processor')
 
