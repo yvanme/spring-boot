@@ -17,9 +17,20 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import java.util.Arrays;
+import java.util.List;
+
 @SpringBootConfiguration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+    
+    private static final String[] DEFAULT_IGNORED = {
+            "/css/**",
+            "/js/**",
+            "/images/**",
+            "/webjars/**",
+            "/**/favicon.ico"
+    };
 
     @Autowired
     @Qualifier("jdbcUserDetailsService")
@@ -37,7 +48,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         super.configure(web);
 
-        web.ignoring().antMatchers("/css/**", "/js/**", "/webjars/**", "/favicon.ico");
+        web.ignoring().antMatchers(DEFAULT_IGNORED);
     }
 
     @Override

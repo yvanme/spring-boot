@@ -44,3 +44,17 @@ keytool -list -rfc --keystore keystore.jks | openssl x509 -inform pem -pubkey
 ## OAuth2
 
 后续会专门开贴讨论OAuth2.0的集成，敬请期待...
+
+## DB Schema
+
+应用启动后会自动创建数据库表结构，只需要插入测试数据即可。
+
+```sql
+INSERT INTO `sb_user` VALUES ('root',1,1,1,1,'$2a$10$yurclUXK8yPBMXq48R/JOO/gPyGSxt9nPntf9uzHDKHnmz4RbQSDu'),('user',1,1,1,1,'$2a$10$FCGoiDits7Dk.mBP8ETUseHohoD3mvH08shEXMuM8TXksPv3PQ0cO');
+INSERT INTO `sb_role` VALUES ('ADMIN'),('USER');
+INSERT INTO `sb_user_role_ref` VALUES ('root','ADMIN'),('root','USER'),('user','USER');
+INSERT INTO `sb_client` VALUES ('94984796',NULL,'5ldDM0uAAsCjW5ZN',NULL);
+INSERT INTO `sb_client_grant_types` VALUES ('94984796','authorization_code'),('94984796','password');
+INSERT INTO `sb_client_scopes` VALUES ('94984796','app');
+INSERT INTO `sb_enterprise` VALUES (1,'中国-上海',NULL,'矩阵工作室','025-12345678');
+```
