@@ -3,9 +3,7 @@ package org.matrixstudio.boot.config.security.oauth2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -24,7 +22,7 @@ import java.security.KeyPair;
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
-    @Qualifier("jdbcClientDetailsService")
+    @Qualifier("jpaClientDetailsService")
     private ClientDetailsService clientDetailsService;
 
     @Autowired

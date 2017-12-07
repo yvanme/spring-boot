@@ -1,17 +1,17 @@
 package org.matrixstudio.boot.resource;
 
+import org.matrixstudio.boot.model.entity.User;
 import org.springframework.hateoas.ResourceSupport;
-import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserResource extends ResourceSupport {
 
-    private UserDetails user;
+    private User user;
 
-    public UserResource(UserDetails user) {
+    public UserResource(User user) {
         this.user = user;
     }
 
-    public UserDetails getUser() {
+    public User getUser() {
         return user;
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.security.oauth2.provider.ClientRegistrationException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class JdbcClientDetailsService implements ClientDetailsService {
+public class JpaClientDetailsService implements ClientDetailsService {
 
     @Autowired
     private ClientRepository clientRepository;
