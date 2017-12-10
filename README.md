@@ -122,3 +122,5 @@ INSERT INTO `sb_client_grant_types` VALUES ('94984796','authorization_code'),('9
 INSERT INTO `sb_client_scopes` VALUES ('94984796','app');
 INSERT INTO `sb_enterprise` VALUES (1,'中国-上海',NULL,'矩阵工作室','025-12345678');
 ```
+
+## Configuration
