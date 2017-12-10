@@ -22,7 +22,7 @@ import java.security.KeyPair;
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
-    @Qualifier("jdbcClientDetailsService")
+    @Qualifier("jpaClientDetailsService")
     private ClientDetailsService clientDetailsService;
 
     @Autowired
@@ -56,5 +56,10 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         KeyPair keyPair = new KeyStoreKeyFactory(new ClassPathResource("keystore.jks"), "123456".toCharArray()).getKeyPair("spring-oauth2");
         converter.setKeyPair(keyPair);
         return converter;
+    }
+
+    @Bean
+    public UserInfoEndpoint userInfoEndpoint() {
+        return new UserInfoEndpoint();
     }
 }

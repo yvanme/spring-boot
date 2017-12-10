@@ -15,20 +15,19 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         super.configure(resources);
 
-        resources.resourceId("spring-boot").stateless(false);
+        resources.resourceId("spring-boot").stateless(true);
     }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         super.configure(http);
 
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .and()
-                .requestMatchers().antMatchers("/audits/**", "/enterprises/**")
+                .requestMatchers().antMatchers("/**")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/audits/**").access("hasRole('USER')")
-                .antMatchers("/enterprises/**").access("#oauth2.hasScope('app')");
+                .antMatchers("/**").access("hasRole('USER') && #oauth2.hasScope('app')");
 
     }
 }
