@@ -12,7 +12,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 import java.security.KeyPair;
@@ -50,16 +52,29 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
     }
 
-    @Bean
-    public JwtAccessTokenConverter jwtAccessTokenConverter() {
-        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        KeyPair keyPair = new KeyStoreKeyFactory(new ClassPathResource("keystore.jks"), "123456".toCharArray()).getKeyPair("spring-oauth2");
-        converter.setKeyPair(keyPair);
-        return converter;
-    }
+//    @Bean
+//    public JwtAccessTokenConverter jwtAccessTokenConverter() {
+//        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+//        KeyPair keyPair = new KeyStoreKeyFactory(new ClassPathResource("keystore.jks"), "123456".toCharArray()).getKeyPair("spring-oauth2");
+//        converter.setKeyPair(keyPair);
+//        return converter;
+//    }
 
     @Bean
     public UserInfoEndpoint userInfoEndpoint() {
         return new UserInfoEndpoint();
+    }
+
+    @Bean
+    public TokenStore jwtTokenStore(){
+        return new JwtTokenStore(jwtAccessTokenConverter());
+    }
+
+    @Bean
+    public JwtAccessTokenConverter jwtAccessTokenConverter(){
+        JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
+        //根据秘钥生成token
+        jwtAccessTokenConverter.setSigningKey("123");
+        return jwtAccessTokenConverter;
     }
 }

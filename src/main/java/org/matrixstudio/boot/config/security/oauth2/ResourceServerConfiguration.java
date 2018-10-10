@@ -22,12 +22,21 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     public void configure(HttpSecurity http) throws Exception {
         super.configure(http);
 
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .and()
-                .requestMatchers().antMatchers("/**")
+                .requestMatchers().antMatchers("/audits/**", "/enterprises/**")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/**").access("hasRole('USER') && #oauth2.hasScope('app')");
+                .antMatchers("/audits/**").access("hasRole('USER')")
+                .antMatchers("/enterprises/**").access("#oauth2.hasScope('app')");
 
+
+//        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
+//                .and()
+//                .requestMatchers().antMatchers("/**")
+//                .and()
+//                .authorizeRequests()
+//                .antMatchers("/**").access("hasRole('USER') && #oauth2.hasScope('app')");
+//
     }
 }
